@@ -17,6 +17,9 @@ My Boilerplate CRUD project built with [**Express**](https://expressjs.com/) as 
 # install dependencies
 $ npm run install
 
+# migrate database
+$ npm run migrate
+
 # serve with hot reload at localhost:3000
 $ npm run dev
 
