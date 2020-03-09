@@ -1,6 +1,6 @@
 # nuxt-with-express
 
-My Boilerplate CRUD project built with [**Express**](https://expressjs.com/) as server side language, [**NuxtJS**](https://nuxtjs.org/) as frontend framework and [**Mongodb**](https://www.mongodb.com/) as database server.
+My Boilerplate CRUD project built with [**Express**](https://expressjs.com/) as server side language, [**NuxtJS**](https://nuxtjs.org/) as frontend framework and [**MySQL**](https://www.mysql.com/) as database server.
 
 ## Features Implemented
 
