@@ -124,13 +124,13 @@ module.exports.user = function(req, res) {
     // verifies secret and checks if the token is expired
     jwt.verify(token.replace(/^Bearer\s/, ''), config.authSecret, function(err, decoded) {
       if (err) {
-        return res.json({ message: 'unauthorized' });
+        return res.status(401).json({message: 'unauthorizd'})
       } else {
         return res.json({ user: decoded })
       }
     });
   }
   else{
-    return res.json({ message: 'unauthorized' });
+    return res.status(401).json({message: 'unauthorizd'})
   }
 }
