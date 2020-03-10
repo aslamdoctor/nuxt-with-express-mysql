@@ -1,6 +1,4 @@
-const config = require('./config')
 const express = require('express')
-
 
 // Create express instnace
 const app = express()
