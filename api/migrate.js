@@ -1,28 +1,28 @@
 const mysql = require("mysql");
 var con = mysql.createConnection({
-  host     : 'localhost',
-  user     : 'root',
-  password : '',
+  host: "localhost",
+  user: "admin",
+  password: "admin"
 });
 
 // Create Connection
 con.connect(function(err) {
   if (err) {
-    console.error('error connecting: ' + err.stack);
+    console.error("error connecting: " + err.stack);
     return;
   }
 
-  console.log('MySQL connected as id ' + con.threadId);
+  console.log("MySQL connected as id " + con.threadId);
 });
 
 // Create Database
-const db_name = 'nuxt_mysql';
-con.query("CREATE DATABASE IF NOT EXISTS " + db_name, function (err, result) {
+const db_name = "nuxt_mysql";
+con.query("CREATE DATABASE IF NOT EXISTS " + db_name, function(err, result) {
   if (err) throw err;
   console.log(`Database "${db_name}" created.`);
 
   // Select db
-  con.changeUser({database : db_name}, function(err) {
+  con.changeUser({ database: db_name }, function(err) {
     if (err) throw err;
     console.log(`Database "${db_name}" selected.`);
 
@@ -31,12 +31,11 @@ con.query("CREATE DATABASE IF NOT EXISTS " + db_name, function (err, result) {
   });
 });
 
-
 // Process on Database
-function processDatabase(){
+function processDatabase() {
   Promise.all([
     createArticlesTable(),
-    createUsersTable(),
+    createUsersTable()
     // add more methods here
   ]).then(() => {
     con.end();
@@ -45,8 +44,8 @@ function processDatabase(){
 }
 
 // Create Articles Table
-function createArticlesTable(){
-  let tablename = 'articles';
+function createArticlesTable() {
+  let tablename = "articles";
   let sql = `CREATE TABLE IF NOT EXISTS ${tablename} (
 
       id INT AUTO_INCREMENT NOT NULL,
@@ -62,8 +61,8 @@ function createArticlesTable(){
 }
 
 // Create Users Table
-function createUsersTable(){
-  let tablename = 'users';
+function createUsersTable() {
+  let tablename = "users";
   let sql = `CREATE TABLE IF NOT EXISTS ${tablename} (
 
       id INT AUTO_INCREMENT NOT NULL,
@@ -79,11 +78,10 @@ function createUsersTable(){
   return createTableHelper(sql, tablename);
 }
 
-
 // Create Table Helper
-function createTableHelper(sql, tablename){
+function createTableHelper(sql, tablename) {
   return new Promise((resolve, reject) => {
-    con.query(sql, function (err, result) {
+    con.query(sql, function(err, result) {
       if (err) throw err;
       console.log(`Table "${tablename}" created.`);
       resolve(result);
